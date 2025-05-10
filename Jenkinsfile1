@@ -52,11 +52,11 @@ pipeline {
                 '''
             }
         }
-        stage('OWASP FS Scan') {
+         stage('OWASP FS SCAN') {
             steps {
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit --nvdApiKey 02a35427-2828-487c-9e6b-cebca0551766', odcInstallation: 'DP-Check'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-            }
+           }
         }
         stage('Trivy FS Scan') {
             steps {
